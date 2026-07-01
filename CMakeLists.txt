@@ -14,6 +14,11 @@ add_executable(GangodAudioPlayer
     src/gangod/graphics.cpp
     headers/gangod/graphics.h
     include/stb_image.h
+    headers/gangod/actiondictionary.h
+    src/gangod/actiondictionary.cpp
+    headers/gangod/gath.h
+    headers/gangod/tech.h
+    src/gangod/tech.cpp
 )
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/cmake/SDL3/bin/SDL3.lib")
     target_link_libraries(GangodAudioPlayer PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/cmake/SDL3/bin/SDL3.lib")
