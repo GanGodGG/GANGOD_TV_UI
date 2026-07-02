@@ -36,23 +36,17 @@ int main() {
         return -1;
     }
     WindowHandler wh;
-    wh.window = SDL_CreateWindow("GANGOD UI!", 800, 600, SDL_WINDOW_HIGH_PIXEL_DENSITY);
+    wh.window = SDL_CreateWindow("GANGOD UI!", 0, 0, SDL_WINDOW_FULLSCREEN | SDL_WINDOW_HIGH_PIXEL_DENSITY);
     
     if(!wh.window){
         //SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error!", "Fail with WIN start, love, GANGOD.", nullptr);
         quit(wh);
     }
     wh.render = SDL_CreateRenderer(wh.window, nullptr);
-    if(!SDL_SetWindowFullscreen(wh.window, true)){
-        std::cout << "Cannot create fullscreen window!" << std::endl;
-    }
-    std::cout << "Settled!" << std::endl;
-    
     running = true;
     ObjectParenter::reload(wh.render);
-    std::cout << "starting run..." << std::endl;
     getch::gamepad::Init();
-    SDL_SetRenderLogicalPresentation(wh.render, 1920, 1080, SDL_LOGICAL_PRESENTATION_LETTERBOX);
+    SDL_SetRenderLogicalPresentation(wh.render, 1920, 1080, SDL_LOGICAL_PRESENTATION_STRETCH);
     
     while(running){
         SDL_Event event { 0 };
